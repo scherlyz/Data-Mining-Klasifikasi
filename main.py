@@ -31,10 +31,21 @@ print(df.head())
 # ============================================
 # 4. Encoding Data (karena semua kategori)
 # ============================================
-le = LabelEncoder()
+encoders = {}
 
 for col in df.columns:
+    if col == 'Age':
+        print(f"\nKolom {col} tidak dilakukan encoding (data numerik).")
+        continue
+    
+    le = LabelEncoder()
     df[col] = le.fit_transform(df[col])
+    encoders[col] = le
+    
+    mapping = {str(k): int(v) for k, v in zip(le.classes_, le.transform(le.classes_))}
+    
+    print(f"\nMapping kolom {col}:")
+    print(mapping)
 
 # Pisahkan fitur dan target
 X = df.drop('class', axis=1)
