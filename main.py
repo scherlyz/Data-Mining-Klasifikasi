@@ -100,21 +100,31 @@ print("\nAccuracy  :", round(accuracy*100,2), "%")
 print("Precision :", round(precision*100,2), "%")
 print("Recall    :", round(recall*100,2), "%")
 
-# Data untuk visualisasi
-metrics = ['Accuracy', 'Precision', 'Recall']
-values = [accuracy*100, precision*100, recall*100]
-
-# Plot bar chart
+# Accuracy Chart
 plt.figure()
-plt.bar(metrics, values)
-plt.title("Model Evaluation Metrics")
+plt.bar(['Accuracy'], [accuracy*100])
+plt.title("Accuracy")
 plt.ylabel("Percentage (%)")
 plt.ylim(0, 100)
+plt.text(0, accuracy*100, round(accuracy*100,2), ha='center', va='bottom')
+plt.show()
 
-# Menampilkan nilai di atas bar
-for i in range(len(values)):
-    plt.text(i, values[i], round(values[i],2), ha='center', va='bottom')
+# Precision Chart
+plt.figure()
+plt.bar(['Precision'], [precision*100])
+plt.title("Precision")
+plt.ylabel("Percentage (%)")
+plt.ylim(0, 100)
+plt.text(0, precision*100, round(precision*100,2), ha='center', va='bottom')
+plt.show()
 
+# Recall Chart
+plt.figure()
+plt.bar(['Recall'], [recall*100])
+plt.title("Recall")
+plt.ylabel("Percentage (%)")
+plt.ylim(0, 100)
+plt.text(0, recall*100, round(recall*100,2), ha='center', va='bottom')
 plt.show()
 
 # ============================================
